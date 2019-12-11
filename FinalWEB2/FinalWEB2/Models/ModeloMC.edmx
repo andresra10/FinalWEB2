@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="WEBFINAL2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CONTACTOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CEDULA" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="NombreCompleto" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FECHA" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VISITA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContactoDeVisita" Type="int" />
+          <Property Name="NombreCompleto" Type="varchar" MaxLength="50" />
+          <Property Name="Motivo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Fecha" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="HoraEntrada" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="HoraSalida" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__VISITA__Contacto__1273C1CD">
+          <End Role="CONTACTOS" Type="Self.CONTACTOS" Multiplicity="0..1" />
+          <End Role="VISITA" Type="Self.VISITA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONTACTOS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VISITA">
+              <PropertyRef Name="ContactoDeVisita" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WEBFINAL2ModelStoreContainer">
+          <EntitySet Name="CONTACTOS" EntityType="Self.CONTACTOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VISITA" EntityType="Self.VISITA" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__VISITA__Contacto__1273C1CD" Association="Self.FK__VISITA__Contacto__1273C1CD">
+            <End Role="CONTACTOS" EntitySet="CONTACTOS" />
+            <End Role="VISITA" EntitySet="VISITA" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WEBFINAL2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CONTACTOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CEDULA" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NombreCompleto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FECHA" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="VISITA" Relationship="Self.FK__VISITA__Contacto__1273C1CD" FromRole="CONTACTOS" ToRole="VISITA" />
+        </EntityType>
+        <EntityType Name="VISITA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContactoDeVisita" Type="Int32" />
+          <Property Name="NombreCompleto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Motivo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fecha" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HoraEntrada" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HoraSalida" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CONTACTOS" Relationship="Self.FK__VISITA__Contacto__1273C1CD" FromRole="VISITA" ToRole="CONTACTOS" />
+        </EntityType>
+        <Association Name="FK__VISITA__Contacto__1273C1CD">
+          <End Role="CONTACTOS" Type="Self.CONTACTOS" Multiplicity="0..1" />
+          <End Role="VISITA" Type="Self.VISITA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONTACTOS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VISITA">
+              <PropertyRef Name="ContactoDeVisita" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WEBFINAL2Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CONTACTOS" EntityType="Self.CONTACTOS" />
+          <EntitySet Name="VISITA" EntityType="Self.VISITA" />
+          <AssociationSet Name="FK__VISITA__Contacto__1273C1CD" Association="Self.FK__VISITA__Contacto__1273C1CD">
+            <End Role="CONTACTOS" EntitySet="CONTACTOS" />
+            <End Role="VISITA" EntitySet="VISITA" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WEBFINAL2ModelStoreContainer" CdmEntityContainer="WEBFINAL2Entities">
+          <EntitySetMapping Name="CONTACTOS">
+            <EntityTypeMapping TypeName="WEBFINAL2Model.CONTACTOS">
+              <MappingFragment StoreEntitySet="CONTACTOS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CEDULA" ColumnName="CEDULA" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VISITA">
+            <EntityTypeMapping TypeName="WEBFINAL2Model.VISITA">
+              <MappingFragment StoreEntitySet="VISITA">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ContactoDeVisita" ColumnName="ContactoDeVisita" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="Motivo" ColumnName="Motivo" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="HoraEntrada" ColumnName="HoraEntrada" />
+                <ScalarProperty Name="HoraSalida" ColumnName="HoraSalida" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

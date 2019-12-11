@@ -1,0 +1,66 @@
+﻿@model FinalWEB2.Models.VISITA
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>VISITA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreCompleto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreCompleto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Motivo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Motivo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HoraEntrada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoraEntrada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HoraSalida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoraSalida)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CONTACTOS.CEDULA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CONTACTOS.CEDULA)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.ID }, new { @class = "btn btn-warning" }) |
+    <div><a href="@Url.Action("Index")" class="btn btn-primary"> Volver atras </a></div>
+</p>

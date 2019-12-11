@@ -1,0 +1,63 @@
+﻿@model IEnumerable<FinalWEB2.Models.VISITA>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista de Visitas</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NombreCompleto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Motivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HoraEntrada)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HoraSalida)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CONTACTOS.NombreCompleto)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NombreCompleto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Motivo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HoraEntrada)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HoraSalida)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CONTACTOS.NombreCompleto)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }, new { @class = "btn btn-warning" }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }, new { @class = "btn btn-info" }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>
